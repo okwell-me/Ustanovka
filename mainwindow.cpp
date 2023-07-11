@@ -51,48 +51,49 @@ void MainWindow::readDataSlot()
             mm3 = 65 + (5-volt3) * 14 + sens3Offset;
             mm4 = 30 + (5-volt4) * 2;
 
-            //qDebug() << adc1;
-
             double r1 = 140.5 - mm1;
             double r2 = 140.5 - mm2;
             double r3 = 140.5 - mm3;
 
             linearScaleRaw = dataIn[9]*256 + dataIn[10];
-            qDebug() << linearScaleRaw;
             linearScaleMM = linearScaleRaw * 0.02;
             ui->linearScaleDataLCD->display(linearScaleMM);
 
-            diameter = (r1+r2+r3)*1.5; //------------------------------------заменить формулу
+            diameter = (r1+r2+r3)/3*2; //------------------------------------заменить формулу
+
 
             if (volt1 > 5.1) {
                 ui->sensor1DataLCD->display("----");
                 diameter = 0;
-            } else ui->sensor1DataLCD->display(mm1);
+            } else ui->sensor1DataLCD->display(r1);
             if (volt2 > 5.1) {
                 ui->sensor2DataLCD->display("----");
                 diameter = 0;
-            } else ui->sensor2DataLCD->display(mm2);
+            } else ui->sensor2DataLCD->display(r2);
             if (volt3 > 5.1) {
                 ui->sensor3DataLCD->display("----");
                 diameter = 0;
-            } else ui->sensor3DataLCD->display(mm3);
+            } else ui->sensor3DataLCD->display(r3);
             /*if (volt4 > 5.1) {
                 ui->sensor4DataLCD->display("----");
             } else ui->sensor4DataLCD->display(mm4);*/
 
             if (diameter == 0) ui->diameterDataLCD->display("----");
+            else ui->diameterDataLCD->display(diameter);
 
-            if (currentCountOfMeasures < targetCountOfMeasures) {
+            if (currentCountOfMeasures < targetCountOfMeasures || targetCountOfMeasures == -1) {
+                if (targetCountOfMeasures > 0){
                 currentCountOfMeasures++;
                 ui->countOfMeasuresProgressBar->setValue((currentCountOfMeasures*100/targetCountOfMeasures));
+                }
 
                 QFile file(filename + ".csv");
                 file.open(QIODevice::Append);
                 QString log = QTime::currentTime().toString("hh:mm:ss") + ";" + QString::number(currentCountOfMeasures) + ";" +
-                        QString::number(adc1) + ";" + QString::number(volt1) + ";" + QString::number(mm1) + ";" +
-                        QString::number(adc2) + ";" + QString::number(volt2) + ";" + QString::number(mm2) + ";" +
-                        QString::number(adc3) + ";" + QString::number(volt3) + ";" + QString::number(mm3) + ";" +
-                        /*QString::number(adc4) + ";" + QString::number(volt4) + ";" + QString::number(mm4) + */QString::number(diameter) + "\n";
+                        QString::number(adc1) + ";" + QString::number(mm1) + ";" +
+                        QString::number(adc2) + ";" + QString::number(mm2) + ";" +
+                        QString::number(adc3) + ";" + QString::number(mm3) + ";" +
+                        QString::number(diameter) + QString::number(linearScaleMM) + "\n";
                 log.replace(".", ",");
                 file.write(log.toLocal8Bit());
             }
@@ -134,8 +135,8 @@ void MainWindow::on_startCountOfMeasuresButton_clicked()
 
     QFile log(filename + ".csv");
     log.open(QIODevice::Append);
-    log.write("/---;---;---;---;---;---/;" + text.toLocal8Bit() + ";/---;---;---;---;---;---;---/;\n");
-    log.write("Time;Number;D1-adc;D1-volt;D1-mm;D2-adc;D2-volt;D2-mm;D3-adc;D3-volt;D3-mm;Diameter;\n");
+    log.write("/---;---;---;---;---/;" + text.toLocal8Bit() + ";/---;---;---;---;---/;\n");
+    log.write("Time;Number;D1-adc;D1-mm;D2-adc;D2-mm;D3-adc;D3-mm;Diameter;LinearScale\n");
 }
 
 
@@ -193,5 +194,47 @@ void MainWindow::on_homeButton_clicked()
     dataOut[3] = 0;
     serial->write((char*)dataOut, 4);
     //send comand to move backward until KONCEVIK
+}
+
+
+void MainWindow::on_moveToPos1Button_clicked()
+{
+    dataOut[0] = 1;
+    dataOut[1] = 8;
+
+    //200mm from home
+    uint16_t targetPos = 200*50;
+
+    dataOut[2] = targetPos >> 8;
+    dataOut[3] = targetPos;
+    serial->write((char*)dataOut, 4);
+}
+
+
+void MainWindow::on_moveToPos2Button_clicked()
+{
+    dataOut[0] = 1;
+    dataOut[1] = 8;
+
+    //400mm from home
+    uint16_t targetPos = 400*50;
+
+    dataOut[2] = targetPos >> 8;
+    dataOut[3] = targetPos;
+    serial->write((char*)dataOut, 4);
+}
+
+
+void MainWindow::on_moveToPos3Button_clicked()
+{
+    dataOut[0] = 1;
+    dataOut[1] = 8;
+
+    //600mm from home
+    uint16_t targetPos = 600*50;
+
+    dataOut[2] = targetPos >> 8;
+    dataOut[3] = targetPos;
+    serial->write((char*)dataOut, 4);
 }
 

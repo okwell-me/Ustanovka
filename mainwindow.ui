@@ -41,13 +41,13 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>17</x>
-      <y>10</y>
+      <x>18</x>
+      <y>11</y>
       <width>872</width>
-      <height>365</height>
+      <height>416</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_9">
+    <layout class="QVBoxLayout" name="verticalLayout_10">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
@@ -448,7 +448,7 @@
                 <bool>false</bool>
                </property>
                <property name="digitCount">
-                <number>7</number>
+                <number>5</number>
                </property>
                <property name="segmentStyle">
                 <enum>QLCDNumber::Filled</enum>
@@ -529,7 +529,7 @@
                 <bool>false</bool>
                </property>
                <property name="digitCount">
-                <number>7</number>
+                <number>5</number>
                </property>
               </widget>
              </item>
@@ -601,7 +601,7 @@
                 <bool>false</bool>
                </property>
                <property name="digitCount">
-                <number>7</number>
+                <number>5</number>
                </property>
                <property name="value" stdset="0">
                 <double>0.000000000000000</double>
@@ -683,7 +683,7 @@
                 <bool>false</bool>
                </property>
                <property name="digitCount">
-                <number>7</number>
+                <number>6</number>
                </property>
                <property name="value" stdset="0">
                 <double>0.000000000000000</double>
@@ -761,7 +761,7 @@
                 <bool>false</bool>
                </property>
                <property name="digitCount">
-                <number>7</number>
+                <number>6</number>
                </property>
                <property name="value" stdset="0">
                 <double>0.000000000000000</double>
@@ -800,116 +800,228 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <layout class="QVBoxLayout" name="verticalLayout_9">
        <item>
-        <widget class="QComboBox" name="motor1SpeedComboBox">
-         <property name="minimumSize">
-          <size>
-           <width>90</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>90</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Calibri</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QComboBox" name="motor1SpeedComboBox">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="forwardButton">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Вперёд</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="backwardButton">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Назад</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="homeButton">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Домой</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="forwardButton">
-         <property name="minimumSize">
-          <size>
-           <width>90</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>90</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Calibri</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Вперёд</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="backwardButton">
-         <property name="minimumSize">
-          <size>
-           <width>90</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>90</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Calibri</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Назад</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="homeButton">
-         <property name="minimumSize">
-          <size>
-           <width>90</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>90</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Calibri</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Домой</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>90</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="moveToPos1Button">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Точка 1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="moveToPos2Button">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Точка 2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="moveToPos3Button">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Точка 3</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>

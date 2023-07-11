@@ -31,13 +31,14 @@ public:
     uint8_t dataOut[4];
     uint16_t adc1, adc2, adc3, adc4;
     uint32_t linearScaleRaw;
-    uint16_t targetCountOfMeasures, currentCountOfMeasures;
+    uint16_t currentCountOfMeasures;
+    int targetCountOfMeasures;
     double volt1, volt2, volt3, volt4;
     double mm1, mm2, mm3, mm4;
     double diameter;
     double linearScaleMM;
 
-    double sens1Offset, sens2Offset, sens3Offset;
+    double sens1Offset = -4, sens2Offset = -5, sens3Offset = 2;
 
 private slots:
     void readDataSlot();
@@ -58,6 +59,12 @@ private slots:
 
     void on_homeButton_clicked();
 
+
+    void on_moveToPos1Button_clicked();
+
+    void on_moveToPos2Button_clicked();
+
+    void on_moveToPos3Button_clicked();
 
 private:
     Ui::MainWindow *ui;
